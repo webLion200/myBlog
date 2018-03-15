@@ -4,8 +4,10 @@ let express = require('express');
 let app = express();
 var http = require('http');
 
-app.get('/', function(req, res) {
-    res.send('hello reacts')
+app.get('/blog', function(req, res) {
+    Blog.find({}, function(err, doc) {
+        res.json(doc)
+    })
 })
 
 app.get('/data', function(req,res){
@@ -22,10 +24,10 @@ app.get('/data', function(req,res){
     //     res.json(doc)
     // })
 
-    var blog = new Blog({
-        user: 'aa',
-        age: 11
-    }).save();
+    // var blog = new Blog({
+    //     user: 'aa',
+    //     age: 11
+    // }).save();
     
     res.end();
 })

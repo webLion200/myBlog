@@ -23,15 +23,22 @@ db.on('disconnected', function() {
     console.log('Mongoose connection disconnected');
 });
 let Blog = mongoose.model('blog',mongoose.Schema({
-    user:{type:String,require:true},
-    age:{type:Number,require:true},
-    time:Date
+    catalog_id: Number,
+    userid:Number ,
+    title: String,
+    content: String,
+    add_time:Date,
+    update_time: Date,
+    tag:Number,
+    attachmentid:Number
 }));
 
 // 新增数据
 // Blog.create({
-//     user:'bb',
-//     age:12
+//     title:'标题4',
+//     content:'这里是内容4',
+//     add_time: new Date(),
+//     tag: 1
 // }, function(err, doc){
 //     if (!err) {
 //         console.log(doc)
@@ -52,6 +59,7 @@ let Blog = mongoose.model('blog',mongoose.Schema({
 // Blog.update({'user':'ming'},{'$set':{age:25}},function(err,doc){
 // 	console.log(doc)
 // })
+
 
 module.exports = {
     getModel: function() {
