@@ -1,29 +1,25 @@
 import React from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
 import {List, Avatar, Icon} from 'antd';
+import { getBlogList } from '../redux/blog_redux'
+
 
 class Blog extends React.Component {
     componentDidMount() {
-        axios.get('/blog')
-            .then(res=>console.log(res.data))
+        this.props.getBlogList();
     }
     render() {
-        const listData = [];
-        for (let i = 0; i < 5; i++) {
-            listData.push({
-                href: 'http://ant.design',
-                title: `ant design part ${i}`,
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-            });
+        let {blogs} = this.props;
+        if(blogs.blogList.length<=0) {
+            return false;
         }
+        const listData = blogs.blogList;
+        console.log(listData)
         const pagination = {
             pageSize: 10,
             current: 1,
             total: listData.length,
-            onChange: (() => {
-            }),
+            onChange: (() => {})
         };
         const IconText = ({type, text}) => (
             <span>
@@ -56,5 +52,10 @@ class Blog extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        blogs: state.blog
+    }
+}
 
-export default Blog
+export default connect(mapStateToProps,{getBlogList})(Blog)
