@@ -1,10 +1,10 @@
 import React from 'react'
 import {Route,Switch} from 'react-router-dom'
-import Home from './home'
-import Blog from './blog'
-import Download from './download'
-import AboutUs from './aboutUs'
-import RegisterLogin from './registerLogin'
+import Home from '../container/home'
+import Blog from '../container/blog'
+import Download from '../container/download'
+import AboutUs from '../container/aboutUs'
+import RegisterLogin from '../container/registerLogin'
 
 class Body extends React.Component {
     render() {
