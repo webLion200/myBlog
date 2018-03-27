@@ -13,13 +13,14 @@ class Blog extends React.Component {
         if(blogs.blogList.length<=0) {
             return false;
         }
-        const listData = blogs.blogList;
-        console.log(listData)
+        const listData = blogs.blogList.data;
+        const totalCount = blogs.blogList.totalCount;
+        const currentPage = blogs.blogList.page;
         const pagination = {
             pageSize: 10,
-            current: 1,
-            total: listData.length,
-            onChange: (() => {})
+            current: currentPage,
+            total: totalCount,
+            onChange: ((e) => {this.props.getBlogList(e)})
         };
         const IconText = ({type, text}) => (
             <span>
