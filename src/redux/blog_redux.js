@@ -25,7 +25,7 @@ function blogList(blogs) {
 
 export function getBlogList(page) {
     return dispatch => {
-        axios.get('/blog',{
+        axios.get('/blogList',{
             params: {
                 page: page || 1
             }

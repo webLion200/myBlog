@@ -10,12 +10,13 @@ class Blog extends React.Component {
     }
     render() {
         let {blogs} = this.props;
-        if(blogs.blogList.length<=0) {
+        let { blogList } = blogs;
+        if(blogList.length<=0) {
             return false;
         }
-        const listData = blogs.blogList.data;
-        const totalCount = blogs.blogList.totalCount;
-        const currentPage = blogs.blogList.page;
+        const listData = blogList.data;
+        const totalCount = blogList.totalCount;
+        const currentPage = blogList.page;
         const pagination = {
             pageSize: 10,
             current: currentPage,
@@ -38,7 +39,7 @@ class Blog extends React.Component {
                 renderItem={item => (
                     <List.Item
                         key={item.title}
-                        actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                        actions={[<IconText type="star-o" text={item.star} />, <IconText type="like-o" text={item.like} />, <IconText type="message" text={item.message} />]}
                         extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
                     >
                         <List.Item.Meta

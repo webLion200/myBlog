@@ -22,21 +22,33 @@ db.on('error', function(err) {
 db.on('disconnected', function() {
     console.log('Mongoose connection disconnected');
 });
-let Blog = mongoose.model('blog',mongoose.Schema({
-    catalog_id: Number,
-    userid:Number ,
+
+let blogListSchema = {
     title: String,
     content: String,
     add_time:Date,
     update_time: Date,
-    tag:Number,
-    attachmentid:Number
-}));
+    star: Number,
+    like: Number,
+    message: Number
+};
+
+let BlogList = mongoose.model('blogList', blogListSchema);
+
+// BlogList.create({
+//     title: '标题22',
+//     content: '阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非阿斯达房贷发放答复阿斯达四方阿道夫地方阿斯蒂芬阿萨德方法非阿斯蒂芬地方地方非',
+//     add_time:new Date(),
+//     update_time: new Date(),
+//     star: 0,
+//     like: 0,
+//     message: 0
+// });
 
 // 新增数据
 // Blog.create({
-//     title:'标题4',
-//     content:'这里是内容4',
+//     title:'标题25',
+//     content:'这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25这里是内容25',
 //     add_time: new Date(),
 //     tag: 1
 // }, function(err, doc){
@@ -48,9 +60,12 @@ let Blog = mongoose.model('blog',mongoose.Schema({
 // })
 
 // 删除数据
-// Blog.remove({}, function(err,doc){
-//     console.log(doc)
-// })
+// Blog.remove({"title": "标题1"}, function(err, docs) {
+//     if(err) {
+//         return console.log(err)
+//     }
+//    console.log(docs)
+// });
 
 // 删除集合
 // db.collection("blogs").drop()
@@ -62,7 +77,7 @@ let Blog = mongoose.model('blog',mongoose.Schema({
 
 
 module.exports = {
-    getModel: function() {
-        return Blog;
+    getBlogList: function() {
+        return BlogList;
     }
 };
