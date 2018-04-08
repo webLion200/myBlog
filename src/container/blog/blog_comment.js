@@ -3,20 +3,8 @@ import { List, Avatar } from 'antd';
 
 class BlogComment extends React.Component {
     render() {
-        const data = [
-            {
-                title: 'Ant Design Title 1',
-            },
-            {
-                title: 'Ant Design Title 2',
-            },
-            {
-                title: 'Ant Design Title 3',
-            },
-            {
-                title: 'Ant Design Title 4',
-            },
-        ];
+        const data = this.props.comments;
+        console.log(data);
 
         return (
             <div className="comment-box">
@@ -26,12 +14,12 @@ class BlogComment extends React.Component {
                     renderItem={item => (
                         <List.Item>
                             <List.Item.Meta
-                                avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                                avatar={<Avatar src={require(`../img/${item.avatar}.png`)} />}
                                 title={<div>
-                                    <a href="https://ant.design">{item.title}</a><br/>
-                                    <span>2017-02-11</span>
+                                    <a href="https://ant.design">{item.name}</a><br/>
+                                    <span>{item.add_time.split('T')[0]}</span>
                                 </div>}
-                                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                description={item.content}
                             />
                         </List.Item>
                     )}

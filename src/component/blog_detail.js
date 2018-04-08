@@ -12,16 +12,17 @@ class BlogDetail extends React.Component {
         this.props.getBlogDetail(blog_id);
     }
     render() {
-        const detail = this.props.details;
+        const context = this.props.details;
+        const detail = context.detail;
+        const comments = context.comments;
         if(!detail) {
             return false
         }
-        console.log(detail)
         return (
             <div>
                 <BlogContent detail={detail}/>
                 <BlogRead detail={detail}/>
-                <BlogComment detail={detail}/>
+                <BlogComment comments={comments}/>
             </div>
         )
     }

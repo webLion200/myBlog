@@ -13,16 +13,16 @@ export function blog(state = initState, action) {
         case BLOG_LIST:
             return {...state, blogList: action.payload.blogs};
         case BLOG_DETAIL:
-            return {...state, blogDetail: action.payload.details}
+            return {...state, blogDetail: action.payload.detail}
         default:
             return state
     }
 }
 
-function blogDetail(details) {
+function blogDetail(detail) {
     return {
         type: BLOG_DETAIL,
-        payload: {details}
+        payload: {detail}
     }
 }
 
