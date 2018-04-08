@@ -1,5 +1,5 @@
 let model = require('./model');
-let BlogList = model.getBlogList();
+let Blogs = model.getBlogs();
 let express = require('express');
 let app = express();
 var http = require('http');
@@ -7,13 +7,13 @@ var http = require('http');
 app.get('/blogList', function(req, res) {
     var page = parseInt(req.query.page) || 1;
     let totalCount;
-    BlogList.count({}, function(err, count) {
+    Blogs.count({}, function(err, count) {
         if(err) {
             return console.log(err);
         }
         totalCount = count;
     });
-    BlogList.find({}).skip((page-1)*10).limit(10).exec(function(err, data) {
+    Blogs.find({}).skip((page-1)*10).limit(10).exec(function(err, data) {
         if(err) {
             return console.log(err);
         }
@@ -21,12 +21,15 @@ app.get('/blogList', function(req, res) {
     })
 });
 
-app.get('/data', function(req,res){
+app.get('/blogDetail', function(req,res){
     // 获取数据
-    BlogList.find({}, function(err, doc) {
-        res.json(doc)
+    const id = req.query.blog_id;
+    Blogs.findOne({_id: id}, function(err, doc) {
+        if(err) {
+            return console.log(err)
+        }
+        res.send(doc);
     });
-    res.end();
 });
 
 app.listen(9093, function(){

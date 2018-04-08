@@ -5,7 +5,20 @@ body {
     width: 20%;
     text-align: center;
 }
-
+.ant-list-vertical .ant-list-item-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    overflow: hidden;
+}
+.read-record {
+    padding: 10px 5px;
+}
+.read-record span {
+    margin-right: 30px;
+}
 .footer {
     padding: 20px 0;
     background: #f3ecec;

@@ -6,6 +6,7 @@ import { Menu } from 'antd';
 class Header extends React.Component {
     render() {
         const path = this.props.location.pathname.match(/(\/\w*)/)[0];
+        console.log(path)
         return (
                 <Menu
                     mode="horizontal"

@@ -1,20 +1,30 @@
 import axios from 'axios'
 
 const BLOG_LIST = 'BLOG_LIST';
+const BLOG_DETAIL = 'BLOG_DETAIL';
 
 const initState = {
-    blogList: []
-}
+    blogList: [],
+    blogDetail: ''
+};
 
 export function blog(state = initState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case BLOG_LIST:
-            return {...state, blogList: action.payload.blogs}
+            return {...state, blogList: action.payload.blogs};
+        case BLOG_DETAIL:
+            return {...state, blogDetail: action.payload.details}
         default:
             return state
     }
 }
 
+function blogDetail(details) {
+    return {
+        type: BLOG_DETAIL,
+        payload: {details}
+    }
+}
 
 function blogList(blogs) {
     return {
@@ -25,12 +35,24 @@ function blogList(blogs) {
 
 export function getBlogList(page) {
     return dispatch => {
-        axios.get('/blogList',{
+        axios.get('/blogList', {
             params: {
                 page: page || 1
             }
         }).then(res => {
-                dispatch(blogList(res.data))
-            })
+            dispatch(blogList(res.data))
+        })
+    }
+}
+
+export function getBlogDetail(id) {
+    return dispatch => {
+        axios.get('/blogDetail', {
+            params: {
+                blog_id: id
+            }
+        }).then(res=> {
+            dispatch(blogDetail(res.data))
+        })
     }
 }

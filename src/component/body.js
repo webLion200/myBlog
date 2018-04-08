@@ -1,21 +1,19 @@
 import React from 'react'
 import {Route,Switch} from 'react-router-dom'
 import Home from '../container/home'
-import Blog from '../container/blog'
+import Blog from '../container/blog/blog'
 import Download from '../container/download'
 import AboutUs from '../container/aboutUs'
 import RegisterLogin from '../container/registerLogin'
+import BlogDetail from './blog_detail'
 
-
-function BlogDetail() {
-    return <h1>BlogDetail</h1>
-}
 class Body extends React.Component {
     render() {
         return (
             <Switch>
                 <Route path="/index" component={Home}/>
-                <Route path="/blog" component={Blog} exact={true} />
+                <Route path="/blog" exact component={Blog}/>
+                <Route path="/blog/detail/" component={BlogDetail}/>
                 <Route path="/download" component={Download}/>
                 <Route path="/aboutUs" component={AboutUs}/>
                 <Route path="/registerLogin" component={RegisterLogin}/>
