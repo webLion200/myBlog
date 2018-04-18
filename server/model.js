@@ -44,6 +44,25 @@ let commentsSchema = {
     delete: Boolean
 };
 let Comments = mongoose.model('comments', commentsSchema);
+
+
+
+let userSchema = {
+    user_id: mongoose.Schema.Types.ObjectId,
+    userName: String,
+    password: String,
+    email: String,
+    phone: Number,
+    avatar: String
+};
+let User = mongoose.model('users', userSchema);
+// User.remove({"email": "3@qq.com"}, function(err, doc) {
+//     if(err) {
+//         return console.log(err)
+//     }
+//     console.log(doc)
+// });
+
 // Comments.create({
 //     comment_id:  new mongoose.Types.ObjectId,
 //     name: '哈哈哈',
@@ -105,5 +124,8 @@ module.exports = {
     },
     getComments: function() {
         return Comments;
+    },
+    getUser: function() {
+        return User;
     }
 };

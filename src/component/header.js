@@ -23,8 +23,8 @@ class Header extends React.Component {
                     <Menu.Item key="/aboutUs">
                         <Link to="/aboutUs">关于我们</Link>
                     </Menu.Item>
-                    <Menu.Item key="/registerLogin">
-                        <Link to="/registerLogin">注册/登录</Link>
+                    <Menu.Item key="/user">
+                        <Link to="/user/login">登录</Link>
                     </Menu.Item>
                 </Menu>
         );

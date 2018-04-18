@@ -19,6 +19,19 @@ body {
 .read-record span {
     margin-right: 30px;
 }
+.ant-form {
+    margin: 100px auto;
+    max-width: 350px;
+}
+.ant-form .login-form-forgot {
+    float: right;
+}
+.ant-form .login-form-button {
+    width: 100%;
+}
+.red {
+    color: red;
+}
 .footer {
     padding: 20px 0;
     background: #f3ecec;

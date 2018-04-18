@@ -4,8 +4,6 @@ import { List, Avatar } from 'antd';
 class BlogComment extends React.Component {
     render() {
         const data = this.props.comments;
-        console.log(data);
-
         return (
             <div className="comment-box">
                 <List

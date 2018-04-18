@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getBlogDetail} from '../redux/blog_redux'
 
-import BlogContent from '../container/blog/blog_content'
-import BlogRead from '../container/blog/blog_read'
-import BlogComment from '../container/blog/blog_comment'
+import BlogContent from '../component/blog/blog_content'
+import BlogRead from '../component/blog/blog_read'
+import BlogComment from '../component/blog/blog_comment'
 
 class BlogDetail extends React.Component {
     componentDidMount() {
