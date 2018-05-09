@@ -29,6 +29,32 @@ body {
 .ant-form .login-form-button {
     width: 100%;
 }
+.add_blog_form {
+    width: 500px;
+    margin: 0 auto;
+}
+.add_blog_form label {
+    display: inline-block;
+    width: 50px;
+}
+.add_blog_form input {
+    padding: 2px 3px;
+}
+.add_blog_form input {
+    border: 1px solid #ccc;
+}
+.add_blog_form textarea {
+    vertical-align: top;
+}
+.submit_btn {
+    padding: 2px 30px;
+    background: #40a9ff;
+    border: 1px solid #ddd;
+    color: #FFF;
+}
+.row {
+    margin-top: 10px;
+}
 .red {
     color: red;
 }

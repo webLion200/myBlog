@@ -23,7 +23,8 @@ db.on('disconnected', function() {
     console.log('Mongoose connection disconnected');
 });
 
-let blogListSchema = {
+let blogSchema = {
+    blog_id: mongoose.Schema.Types.ObjectId,
     title: String,
     content: String,
     add_time: Date,
@@ -32,8 +33,7 @@ let blogListSchema = {
     like: Number,
     message: Number
 };
-let Blogs = mongoose.model('blogs', blogListSchema);
-
+let Blogs = mongoose.model('blogs', blogSchema);
 
 let commentsSchema = {
     comment_id:  mongoose.Schema.Types.ObjectId,

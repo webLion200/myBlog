@@ -27,7 +27,7 @@ class BlogList extends React.Component {
                     >
                         <Meta
                             avatar={<Avatar src={item.avatar} />}
-                            title={<Link to={`/blog/detail/?_id=${item._id}`}>{item.title}</Link>}
+                            title={<Link to={`/blog/detail/?blog_id=${item.blog_id}`}>{item.title}</Link>}
                             description={item.description}
                         />
                         {item.content}

@@ -17,8 +17,8 @@ class Header extends React.Component {
                     <Menu.Item key="/blog">
                         <Link to="/blog">博客</Link>
                     </Menu.Item>
-                    <Menu.Item  key="/download">
-                        <Link to="/download">资源下载</Link>
+                    <Menu.Item  key="/addBlog">
+                        <Link to="/addBlog">写文章</Link>
                     </Menu.Item>
                     <Menu.Item key="/aboutUs">
                         <Link to="/aboutUs">关于我们</Link>

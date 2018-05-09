@@ -1,21 +1,30 @@
 import axios from 'axios'
 
+const BLOG_NEW = 'BLOG_NEW';
 const BLOG_LIST = 'BLOG_LIST';
 const BLOG_DETAIL = 'BLOG_DETAIL';
-
 const initState = {
     blogList: [],
     blogDetail: ''
 };
 
-export function blog(state = initState, action) {
+export function blogReducer(state = initState, action) {
     switch (action.type) {
+        case BLOG_NEW:
+            return {...state, ...action.payload};
         case BLOG_LIST:
             return {...state, blogList: action.payload.blogs};
         case BLOG_DETAIL:
             return {...state, blogDetail: action.payload.detail}
         default:
             return state
+    }
+}
+
+function newBlog(blog) {
+    return {
+        type: BLOG_NEW,
+        payload: blog
     }
 }
 
@@ -30,6 +39,17 @@ function blogList(blogs) {
     return {
         type: BLOG_LIST,
         payload: {blogs}
+    }
+}
+
+export function getNewBlog(title, content) {
+    return dispatch => {
+        axios.post('/addBlog', {
+            title,
+            content
+        }).then(res => {
+            dispatch(newBlog(res.data));
+        })
     }
 }
 

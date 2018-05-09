@@ -1,4 +1,5 @@
 let express = require('express');
+const mongoose = require('mongoose');
 let model = require('./model');
 let Blogs = model.getBlogs();
 let Comments = model.getComments();
@@ -25,14 +26,8 @@ Router.get('/blogList', function (req, res) {
 Router.get('/blogDetail', function (req, res) {
     // 获取数据
     const id = req.query.blog_id;
-    // Blogs.findOne({_id: id}, function(err, doc) {
-    //     if(err) {
-    //         return console.log(err)
-    //     }
-    //     res.send(doc);
-    // });
-
-    let promise = Blogs.findOne({_id: id}).exec();
+    console.log('aaa:' + id);
+    let promise = Blogs.findOne({blog_id: id}).exec();
     promise.then(detail => {
         const comments = Comments.find({}).exec();
         comments.then(comments => {
@@ -41,6 +36,23 @@ Router.get('/blogDetail', function (req, res) {
     }).catch(err => {
         console.log(err)
     });
+});
+
+Router.post('/addBlog', function(req, res) {
+    const body = req.body;
+    const blog_id =  new mongoose.Types.ObjectId;
+    console.log(blog_id);
+    Blogs.create({
+        blog_id:  blog_id,
+        title: body.title,
+        content: body.content,
+        add_time: new Date(),
+        update_time: new Date(),
+        star: 0,
+        like: 0,
+        message: 0
+    });
+    res.send({code: 1, msg: '新建blog成功',blog_id});
 });
 
 module.exports = Router

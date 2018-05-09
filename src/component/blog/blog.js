@@ -39,7 +39,7 @@ class Blog extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        blogs: state.blog
+        blogs: state.blogReducer
     }
 }
 

@@ -8,7 +8,7 @@ import BlogComment from '../component/blog/blog_comment'
 
 class BlogDetail extends React.Component {
     componentDidMount() {
-        const blog_id = this.props.location.search.split('_id=')[1];
+        const blog_id = this.props.location.search.split('blog_id=')[1];
         this.props.getBlogDetail(blog_id);
     }
     render() {
@@ -29,7 +29,7 @@ class BlogDetail extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        details: state.blog.blogDetail
+        details: state.blogReducer.blogDetail
     }
 };
 
