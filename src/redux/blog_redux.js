@@ -76,3 +76,16 @@ export function getBlogDetail(id) {
         })
     }
 }
+
+export function userAction(id, type) {
+    return dispatch => {
+        axios.get('/blogDetail', {
+            params: {
+                blog_id: id,
+                action: type
+            }
+        }).then(res => {
+            dispatch(blogDetail(res.data));
+        })
+    }
+}

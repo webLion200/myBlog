@@ -26,13 +26,33 @@ Router.get('/blogList', function (req, res) {
 Router.get('/blogDetail', function (req, res) {
     // 获取数据
     const id = req.query.blog_id;
-    console.log('aaa:' + id);
+    const action = req.query.action;
     let promise = Blogs.findOne({blog_id: id}).exec();
     promise.then(detail => {
         const comments = Comments.find({}).exec();
-        comments.then(comments => {
-            res.send({detail, comments})
-        });
+        if(action == 'like') {
+            Blogs.findOneAndUpdate({blog_id: id}, {$set:{like: detail.like+1}}, function(err,doc) {
+                if (err) {
+                    console.log(err)
+                }
+                comments.then(comments => {
+                    res.send({detail:doc, comments})
+                });
+            })
+        } else if(action == 'star'){
+            Blogs.findOneAndUpdate({blog_id: id}, {$set:{star: detail.star+1}}, function(err,doc) {
+                if (err) {
+                    console.log(err)
+                }
+                comments.then(comments => {
+                    res.send({detail:doc, comments})
+                });
+            })
+        } else {
+            comments.then(comments => {
+                res.send({detail, comments})
+            });
+        }
     }).catch(err => {
         console.log(err)
     });

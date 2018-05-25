@@ -63,3 +63,6 @@ body {
     background: #f3ecec;
     text-align: center;
 }
+.icon-hover:hover {
+    cursor: pointer;
+}
